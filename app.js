@@ -1,9 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const resultDiv = document.getElementById('result');
     
     searchBtn.addEventListener('click', function() {
-        // AJAX request to superheroes.php
-        fetch('superheroes.php')
+        // Get and sanitize user input
+        const query = searchInput.value.trim();
+        
+        // Build the URL with query parameter
+        let url = 'superheroes.php';
+        if (query) {
+            // Sanitize the input by encoding it for URL
+            url += '?query=' + encodeURIComponent(query);
+        }
+        
+        // Make AJAX request using Fetch API
+        fetch(url)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -11,23 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.text();
             })
             .then(html => {
-                // Create temporary element to extract text from HTML
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = html;
-                
-                // Get all list items and extract text
-                const listItems = tempDiv.querySelectorAll('li');
-                let superheroes = '';
-                
-                listItems.forEach(item => {
-                    superheroes += item.textContent + '\n';
-                });
-                
-                // Show in alert as required
-                alert('Superheroes:\n' + superheroes);
+                // Display the result in the div
+                resultDiv.innerHTML = html;
             })
             .catch(error => {
-                alert('Error: ' + error.message);
+                console.error('Error:', error);
+                resultDiv.innerHTML = '<p class="not-found">Error loading superheroes. Please try again.</p>';
             });
+    });
+    
+    // Optional: Allow pressing Enter to search
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchBtn.click();
+        }
     });
 });
