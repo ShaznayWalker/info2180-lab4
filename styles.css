@@ -1,29 +1,113 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background: black 100%;
+    color: #ffffff;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
 .container {
-    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+    color: white;
+    background:  #d00000;
+    padding: 20px;
+    font-size: 28px;
+}
+
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #f1faee;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#searchInput {
+    flex: 1;
+    max-width: 400px;
+    padding: 12px;
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    font-size: 16px;
+    background: white;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #e63946;
 }
 
 button {
-    background-color: grey;
-    color: black;
+    background: #d00000 100%;
+    color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 16px;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #ff6b7a 0%;
+}
+
+.results-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffb703;
+}
+
+#result {
+    border: 2px solid rgba;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.superhero-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.superhero-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba;
+    border-radius: 4px;
+}
+
+.superhero-single h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.superhero-single h4 {
+    color: #a8dadc;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.superhero-single p {
+    line-height: 2.0;
+    color: white;
+}
+
+.not-found {
+    color: #a8dadc;
+    font-style: italic;
 }
